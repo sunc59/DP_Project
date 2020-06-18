@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+		<title>黑马旅游网</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="js/bootstrap.min.js"></script>
+
+		<style type="text/css">
+			.paddtop {
+				padding-top: 12px;
+			}
+
+			.search_input {
+				float: left;
+				border: 2px solid skyblue;
+				width: 350px;
+				height: 40px;
+				padding-left: 8px;
+				margin-top: 15px;
+			}
+
+			.search_btn {	
+				margin-top: 15px;
+				height: 40px;
+			
+			}
+			.cart_btn{
+				margin-top: 15px;
+				height: 40px;
+			}
+
+			.jx {
+				border-bottom: 3px solid gold;
+				padding: 5px;
+				margin-top: 5px;
+			}
+
+			.money {
+				color: red;
+				font-size: 20px;
+			}
+			.company{
+				height: 40px;
+				background-color: skyblue;
+				text-align: center;
+				line-height: 40px;
+				font-size: 12px;
+				color: gray;
+			}
+			.nav1{
+				background-color: gainsboro;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<!-- 1.页眉部分，100% -->
+		<header class="container-fluid">
+			<div id="head"></div>
+			<script>
+				$.get("header.html",{},function (data) {
+					$("#head").html(data);
+				});
+			</script>
+		</header>
+		
+		
+		<!-- 2.主体部分，留白-->
+		<div id="" class="container">
+			
+			<div style="float: left;width: 200px;">
+				<div class="panel-body">
+				    <a class="list-group-item active">
+				    	用户中心
+				    </a>
+					<a href="#" class="list-group-item">消息中心</a>
+				    <a href="#" class="list-group-item active">个人资料</a>
+				    <a href="orderInfo.html" class="list-group-item">我的订单</a>
+					<a href="#" class="list-group-item">购物车</a>
+					<a href="addressInfo.html" class="list-group-item">收货地址</a>
+					<a href="#" class="list-group-item">收藏商品</a>
+					<a href="#" class="list-group-item">收藏店铺</a>
+					<a href="#" class="list-group-item">购买记录</a>
+				    <a href="#" class="list-group-item">会员积分</a>
+				</div>
+			</div>
+			
+			<div class="panel panel-info" style="width: 800px;float: left;margin-left: 40px;margin-top: 10px;">
+			    <div class="panel-heading">
+					<ul class="breadcrumb panel-title">
+						<li><a href="userCenter.html">用户中心</a></li>
+						<li class="active">个人资料</li>
+					</ul>
+			    </div>
+			    <div class="panel-body">
+			        <p>这是一个基本的面板</p>
+					<br>
+					<form class="form-horizontal">
+						<input name="id" id="id" type="hidden" value="">
+						<div class="form-group">
+						  <label for="" class="col-sm-2 control-label">用户名</label>
+						  <div class="col-sm-6">
+						    <p class="form-control-static"><span id="username">用户名</span></p>
+						  </div>
+						</div>
+						<div class="form-group">
+						  <label for="" class="col-sm-2 control-label">邮箱</label>
+						  <div class="col-sm-6">
+						    <p class="form-control-static"><span id="email">邮箱</span></p>
+						  </div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="col-sm-2 control-label">密码</label>
+							<div class="col-sm-6">
+								<input type="text" name="password" class="form-control" id="password">
+							</div>
+						</div>
+						
+					  <div class="form-group">
+					    <label for="nickname" class="col-sm-2 control-label">昵称</label>
+					    <div class="col-sm-6">
+					      <input type="text" name="nickname" class="form-control" id="nickname">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="telephone" class="col-sm-2 control-label">手机号</label>
+					    <div class="col-sm-6">
+					      <input type="text" name="telephone" class="form-control" id="telephone">
+					    </div>
+					  </div>
+					  
+					  <div class="form-group">
+					
+						<label class="col-sm-2 control-label">性别</label>
+						  
+						<div class="col-sm-6">
+						  <label class="radio-inline">
+						    <input type="radio" name="gender" id="radio1" value="男"> 男
+						  </label>
+						  <label class="radio-inline">
+						    <input type="radio" name="gender" id="radio2" value="女"> 女
+						  </label>
+						</div>
+					    
+					  </div>
+					</form>
+					 <!--他妈的傻逼，form中的button会默认为type=submit，这个傻逼坑-->
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-primary col-lg-4" id="updateBtn">修改</button>
+					    </div>
+					  </div>
+
+					
+			    </div>
+			</div>
+		</div>
+
+
+		<!-- 3.页脚部分，100%-->
+		<div id="foot"></div>
+		<script>
+			$(function () {
+				$.get("footer.html",{},function (data) {
+					$("#foot").html(data);
+				});
+			});
+		</script>
+	</body>
+<script>
+	$(function () {
+		$("#updateBtn").click(function () {
+			$.get("user/update",$("form").serialize());
+			alert(123);
+			location.href = "login.html";
+			
+		});
+		$.get("user/findOne",{},function (data) {
+			if (data.username!=null) {
+				$("#id").val(data.id);
+				$("#username").html(data.username);
+				$("#email").html(data.email);
+				$("#password").val(data.password);
+				$("#nickname").val(data.nickname);
+				$("#telephone").val(data.telephone);
+				if (data.gender == '男'){
+					$("#radio1").attr("checked",'checked');
+				}
+				if (data.gender == '女') {
+					$("#radio2").attr("checked",'checked');
+				}
+			}
+		});
+	});
+</script>
+</html>

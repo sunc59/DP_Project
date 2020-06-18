@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+    <title>黑马旅游网</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/getParameter.js"></script>
+
+    <style type="text/css">
+        .paddtop {
+            padding-top: 12px;
+        }
+
+        .search_input {
+            float: left;
+            border: 2px solid skyblue;
+            width: 350px;
+            height: 40px;
+            padding-left: 8px;
+            margin-top: 15px;
+        }
+
+        .search_btn {
+            margin-top: 15px;
+            height: 40px;
+
+        }
+
+        .cart_btn {
+            margin-top: 15px;
+            height: 40px;
+        }
+
+        .jx {
+            border-bottom: 3px solid skyblue;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .money {
+            color: red;
+            font-size: 20px;
+        }
+
+        .company {
+            height: 40px;
+            background-color: skyblue;
+            text-align: center;
+            line-height: 40px;
+            font-size: 12px;
+            color: gray;
+        }
+
+        .nav1 {
+            background-color: gainsboro;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<!-- 1.页眉部分，100% -->
+<header class="container-fluid">
+    <div id="head"></div>
+</header>
+
+
+<!-- 2.主体部分，留白-->
+<div class="container">
+    <div class="page_one">
+        <div class="contant">
+            <div class="crumbs">
+                <img src="images/search.png" alt="">
+                <p>黑马旅行><span>搜索结果</span></p>
+            </div>
+            <div class="xinxi clearfix">
+                <div class="left">
+                    <div class="header">
+                        <span>商品信息</span>
+                        <span class="jg">价格</span>
+                    </div>
+                    <ul id="pps">
+                        <li>
+                            <div class="img"><img src="images/04-search_03.jpg" alt=""></div>
+                            <div class="text1">
+                                <p>【减100元 含除夕/春节出发】广州增城三英温泉度假酒店/自由行套票</p>
+                                <br/>
+                                <p>1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
+                            </div>
+                            <div class="price">
+                                <p class="price_num">
+                                    <span>&yen;</span>
+                                    <span>299</span>
+                                    <span>起</span>
+                                </p>
+                                <p>
+                                    <span class="shouchang">已收藏450次</span>
+                                </p>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                    <div class="page_num_inf">
+                        <i></i> 共
+                        <span id="totalPage">12</span>页<span id="totalCount">132</span>条
+                    </div>
+                    <div>
+                        <ul class="pagination pagination-lg">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li class="disabled"><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                            <li><a href="#">末页</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 3.页脚部分，100%-->
+<div id="foot"></div>
+</body>
+
+<script>
+    $(function () {
+
+        $(function () {
+            $.get("header.html", {}, function (data) {
+                $("#head").html(data);
+            });
+            $.get("footer.html", {}, function (data) {
+                $("#foot").html(data);
+            });
+
+            $.get("favorite/findAll", {}, function (data) {
+                var lis = "";
+                for (var i = 0; i < data.length; i++) {
+                    var p = data[i];
+                    var li = ' <li>\n' +
+                                '    <div class="img"><img src="images/04-search_03.jpg" alt=""></div>\n' +
+                                '    <div class="text1">\n' +
+                                '        <p>'+p.product.name+'</p>\n' +
+                                '        <br />\n' +
+                                '        <p>'+p.product.subTitle+'</p>\n' +
+                                '    </div>\n' +
+                                '    <div class="price">\n' +
+                                '        <p class="price_num">\n' +
+                                '            <span>&yen;</span>\n' +
+                                '            <span>'+p.product.promotePrice+'</span>\n' +
+                                '            <span>起</span>\n' +
+                                '        </p>\n' +
+                                '        <p>\n' +
+                                '            <span class="shouchang">已收藏'+p.count+'次</span>\n' +
+                                '        </p>\n' +
+                                '    </div>\n' +
+                                '</li>';
+                    lis += li;
+                }
+                $("#pps").html(lis);
+            });
+
+        });
+
+    });
+
+
+</script>
+
+</html>

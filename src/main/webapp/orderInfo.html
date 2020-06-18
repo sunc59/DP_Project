@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+		<title>黑马旅游网</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="js/bootstrap.min.js"></script>
+
+		<style type="text/css">
+			.paddtop {
+				padding-top: 12px;
+			}
+
+			.search_input {
+				float: left;
+				border: 2px solid skyblue;
+				width: 350px;
+				height: 40px;
+				padding-left: 8px;
+				margin-top: 15px;
+			}
+
+			.search_btn {
+				margin-top: 15px;
+				height: 40px;
+
+			}
+
+			.cart_btn {
+				margin-top: 15px;
+				height: 40px;
+			}
+
+			.jx {
+				border-bottom: 3px solid gold;
+				padding: 5px;
+				margin-top: 5px;
+			}
+
+			.money {
+				color: red;
+				font-size: 20px;
+			}
+
+			.company {
+				height: 40px;
+				background-color: skyblue;
+				text-align: center;
+				line-height: 40px;
+				font-size: 12px;
+				color: gray;
+			}
+
+			.nav1 {
+				background-color: gainsboro;
+			}
+		</style>
+
+		<script type="text/javascript">
+
+		</script>
+	</head>
+	<body>
+		<!-- 1.页眉部分，100% -->
+		<header class="container-fluid">
+			<div id="head"></div>
+
+		</header>
+
+
+		<!-- 2.主体部分，留白-->
+		<div id="" class="container">
+
+			<div style="float: left;width: 200px;">
+				<div class="panel-body">
+					<a class="list-group-item active">
+						用户信息
+					</a>
+					<a href="#" class="list-group-item">消息中心</a>
+					<a href="userInfo.html" class="list-group-item">个人资料</a>
+					<a href="#" class="list-group-item active">我的订单</a>
+					<a href="#" class="list-group-item">购物车</a>
+					<a href="addressInfo.html" class="list-group-item">收货地址</a>
+					<a href="#" class="list-group-item">收藏商品</a>
+					<a href="#" class="list-group-item">收藏店铺</a>
+					<a href="#" class="list-group-item">购买记录</a>
+					<a href="#" class="list-group-item">会员积分</a>
+				</div>
+			</div>
+
+			<div class="panel panel-info" style="width: 800px;float: left;margin-left: 40px;margin-top: 10px;">
+				<div class="panel-heading">
+					<ul class="breadcrumb panel-title">
+						<li><a href="userCenter.html">用户中心</a></li>
+						<li class="active">我的订单</li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<p>这是一个基本的面板</p>
+					<br>
+					<div>
+						<ul id="myTab" class="nav nav-tabs">
+							<li class="active">
+								<a href="#table" data-toggle="tab">
+									所有订单
+								</a>
+							</li>
+							<li>
+								<a href="#table1" data-toggle="tab">待付款</a>
+							</li>
+							<li>
+								<a href="#table2" data-toggle="tab">待发货</a>
+							</li>
+							<li>
+								<a href="#table3" data-toggle="tab">待收货</a>
+							</li>
+							<li>
+								<a href="#table4" data-toggle="tab">待评价</a>
+							</li>
+							<li>
+								<a href="#table5" data-toggle="tab">已评价</a>
+							</li>
+
+						</ul>
+
+						<div id="myTabContent" class="tab-content">
+							<div class="tab-pane fade in active" id="table">
+								<br>
+								<table class="table table-hover table-bordered">
+									<tbody id="tbody">
+									</tbody>
+								</table>
+
+							</div>
+						    <div class="tab-pane fade " id="table1">
+								<br>
+								<table class="table table-hover table-bordered">
+									<tbody id="tbody1">
+									</tbody>
+								</table>
+								
+							</div>
+						    <div class="tab-pane fade " id="table2">
+								<br>
+								<table class="table table-hover table-bordered">
+									<tbody id="tbody2">
+									</tbody>
+								</table>
+						    	
+						    </div>
+						    <div class="tab-pane fade " id="table3">
+						    	<br>
+						    	<table class="table table-hover table-bordered">
+									<tbody id="tbody3">
+									</tbody>
+						    	</table>
+						    </div>
+							<div class="tab-pane fade " id="table4">
+								<br>
+								<table class="table table-hover table-bordered">
+									<tbody id="tbody4">
+									</tbody>
+								</table>
+							</div>
+							<div class="tab-pane fade " id="table5">
+								<br>
+								<table class="table table-hover table-bordered">
+									<tbody id="tbody5">
+									</tbody>
+								</table>
+							</div>
+						    
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 3.页脚部分，100%-->
+		<div id="foot"></div>
+		<script>
+
+			$(function () {
+				$.get("header.html",{},function (data) {
+					$("#head").html(data);
+				});
+				$.get("footer.html",{},function (data) {
+					$("#foot").html(data);
+				});
+
+				$.get("order/findAll",{},function (data) {
+					var lis1 = 	'<tr class="success">\n' +
+							'<th>订单编号</th>\n' +
+							'<th>收件人</th>\n' +
+							'<th>订单时间</th>\n' +
+							'<th>总价</th>\n' +
+							'<th>操作</th>\n' +
+							'</tr>';
+					var lis2 = lis1;
+					var lis3 = lis1;
+					var lis4 = lis1;
+					var lis5 = lis1;
+					var lis = lis1;
+
+					for (var i = 0; i < data.length; i++) {
+
+						if (data[i].status==1){
+							var order = data[i];
+							var li1 = 	'<tr>\n' +
+									'<td>'+order.orderCode+'</td>\n' +
+									'<td>'+order.address.receiverName+'</td>\n' +
+									'<td>'+order.createTime+'</td>\n' +
+									'<td>'+order.money+'</td>\n' +
+									'<td>\n' +
+									'<button type="button" class="btn btn-info btn-sm">查看</button>\n' +
+									'<button type="button" onclick="pay('+order.id+')" class="btn btn-success btn-sm">请付款</button>\n' +
+									'</td>\n' +
+									'</tr>';
+							lis1 += li1;
+							lis += li1;
+						}
+						if (data[i].status==2){
+							var order = data[i];
+							var li2 = 	'<tr>\n' +
+									'<td>'+order.orderCode+'</td>\n' +
+									'<td>'+order.address.receiverName+'</td>\n' +
+									'<td>'+order.createTime+'</td>\n' +
+									'<td>'+order.money+'</td>\n' +
+									'<td>\n' +
+									'<button type="button" class="btn btn-info btn-sm">查看</button>\n' +
+									'<button type="button" class="btn btn-warning btn-sm">待发货</button>\n' +
+									'</td>\n' +
+									'</tr>';
+							lis2 += li2;
+							lis += li2;
+						}
+						if (data[i].status==3){
+							var order = data[i];
+							var li3 = 	'<tr>\n' +
+									'<td>'+order.orderCode+'</td>\n' +
+									'<td>'+order.address.receiverName+'</td>\n' +
+									'<td>'+order.createTime+'</td>\n' +
+									'<td>'+order.money+'</td>\n' +
+									'<td>\n' +
+									'<button type="button" class="btn btn-info btn-sm">查看</button>\n' +
+									'<button type="button" onclick="receive('+order.id+')" class="btn btn-success btn-sm">请收货</button>\n' +
+									'</td>\n' +
+									'</tr>';
+							lis3 += li3;
+							lis += li3;
+						}
+						if (data[i].status==4){
+							var order = data[i];
+							var li4 = 	'<tr>\n' +
+									'<td>'+order.orderCode+'</td>\n' +
+									'<td>'+order.address.receiverName+'</td>\n' +
+									'<td>'+order.createTime+'</td>\n' +
+									'<td>'+order.money+'</td>\n' +
+									'<td>\n' +
+									'<button type="button" class="btn btn-info btn-sm">查看</button>\n' +
+									'<button type="button" onclick="review('+order.id+')" class="btn btn-primary btn-sm">去评价</button>\n' +
+									'</td>\n' +
+									'</tr>';
+							lis4 += li4;
+							lis += li4;
+						}
+						if (data[i].status==5){
+							var order = data[i];
+							var li5 = 	'<tr>\n' +
+									'<td>'+order.orderCode+'</td>\n' +
+									'<td>'+order.address.receiverName+'</td>\n' +
+									'<td>'+order.createTime+'</td>\n' +
+									'<td>'+order.money+'</td>\n' +
+									'<td>\n' +
+									'<button type="button" class="btn btn-info btn-sm">查看</button>\n' +
+									'<button type="button" class="btn btn-default btn-sm">已评价</button>\n' +
+									'</td>\n' +
+									'</tr>';
+							lis5 += li5;
+							lis += li5;
+						}
+						$("#tbody1").html(lis1);
+						$("#tbody2").html(lis2);
+						$("#tbody3").html(lis3);
+						$("#tbody4").html(lis4);
+						$("#tbody5").html(lis5);
+						$("#tbody").html(lis);
+
+					}
+				});
+
+			});
+			function pay(oid) {
+				alert("付款");
+				location.href = "order/payOrder?oid="+oid;
+			}
+			function receive(oid) {
+				alert("收货");
+				location.href = "order/receiveOrder?oid="+oid;
+			}
+			function review(oid) {
+				alert("评价");
+				location.href = "order/reviewOrder?oid="+oid;
+			}
+		</script>
+	</body>
+</html>

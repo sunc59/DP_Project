@@ -1,0 +1,93 @@
+<div class="panel panel-default row">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="height: 38px;">
+        <span id="hello" style="margin-left: 100px;">您好，欢迎光临！</span>
+        <a id="loginText" href="login.html" style="color: skyblue;text-decoration: none;">[请登录]</a>
+        <a href="register.html" style="color: skyblue;text-decoration: none;">[免费注册]</a>
+        <ul class="list-inline" style="float: right;margin-right: 100px ;">
+                    <li><a href="userCenter.html" style="color: #000000;text-decoration: none;">用户中心</a>&nbsp;&nbsp;&nbsp;|</li>
+                    <li><a href="#" style="color: #000000;text-decoration: none;">我的订单</a>&nbsp;&nbsp;&nbsp;|</li>
+                    <li><a href="#" style="color: #000000;text-decoration: none;">用户中心</a>&nbsp;&nbsp;&nbsp;|</li>
+                    <li><a href="#" style="color: #000000;text-decoration: none;">用户中心</a>&nbsp;&nbsp;&nbsp;</li>
+                </ul>
+
+
+    </div>
+    <div class="panel-body">
+        <!-- 第二行为搜索框和logo -->
+
+        <div class="col-lg-2" style="margin-left: 100px;">
+            <a href="index.html"><img src="img/logo.png" class="img-responsive" style="width: 120px;height: 120px"></a>
+        </div>
+        <div class="col-lg-5" style="margin-left: 100px;margin-top: 20px">
+
+            <input id="searchText" type="text" placeholder="请输入线路名称" class="search_input" />
+            <button id="searchBtn" type="button" class="btn btn-info search_btn">
+                <span class="glyphicon glyphicon-search"></span> &nbsp;搜索
+            </button>
+            <button type="button" class="btn btn-danger cart_btn" style="margin-left: 5px;">
+                <span class="glyphicon glyphicon-shopping-cart badge">12</span> &nbsp;购物车
+            </button>
+        </div>
+
+        <div class="col-lg-2" style="float: right;margin-right: 100px;margin-top: 30px;">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: skyblue;">
+                    <span style="font-size: 15px;">京东快报</span>
+                    <span style="float: right; font-size: 12px;"><a href="#">更多></a></span>
+                </div>
+                <div class="panel-body">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="panel-footer" style="background-color: skyblue;height: 40px;">
+        <ul class="list-inline" style="text-align: center; vertical-align: middle;" id="categories">
+
+        </ul>
+    </div>
+</div>
+
+<script>
+    $(function () {
+
+        $.get("user/findOne",{},function (data) {
+            if (data.username!=null) {
+                $("#hello").html("欢迎！[" + data.username + "]");
+                $("#loginText").html("[退出]");
+                $("#loginText").attr("id", "logoutText");
+                $("#logoutText").attr("href", "#");
+                $("#logoutText").attr("onclick", "logout()");
+            }
+        });
+
+        $.get("category/findAll",{},function (data) {
+            var lis = "";
+            var li = '<li style="font-size: 16px;margin-right: 50px;"><a href="index.html" style="text-decoration: none;color: black">首页</a></li>';
+            lis += li;
+            for (var i = 0; i < data.length; i++) {
+                var li = '<li style="font-size: 16px;margin-right: 50px;"><a href="#" style="text-decoration: none;color: black" onclick="load('+data[i].id+')">'+data[i].name+'</a></li>';
+                lis += li;
+            }
+            var li = '<li style="font-size: 16px;margin-right: 50px;"><a href="favorite.html" style="text-decoration: none;color: black">收藏排行榜</a></li>';
+            lis += li;
+            $("#categories").html(lis);
+        });
+
+        $("#searchBtn").click(function () {
+            var text = $("#searchText").val();
+            location.href = "productList.html?pName="+text;
+        });
+
+    });
+    function logout() {
+        location.href = "user/logout";
+    }
+    function load(cid) {
+        location.href = "productList.html?cid="+cid;
+    }
+
+</script>

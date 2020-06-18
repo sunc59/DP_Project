@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
+		<title>黑马旅游网</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+
+		<link rel="stylesheet" type="text/css" href="css/route-detail.css">
+		<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/getParameter.js"></script>
+		<style type="text/css">
+			.paddtop {
+				padding-top: 12px;
+			}
+
+			.search_input {
+				float: left;
+				border: 2px solid skyblue;
+				width: 350px;
+				height: 40px;
+				padding-left: 8px;
+				margin-top: 15px;
+			}
+
+			.search_btn {	
+				margin-top: 15px;
+				height: 40px;
+			
+			}
+			.cart_btn{
+				margin-top: 15px;
+				height: 40px;
+			}
+
+			.jx {
+				border-bottom: 3px solid skyblue;
+				padding: 5px;
+				margin-top: 5px;
+			}
+
+			.money {
+				color: red;
+				font-size: 20px;
+			}
+			.company{
+				height: 40px;
+				background-color: skyblue;
+				text-align: center;
+				line-height: 40px;
+				font-size: 12px;
+				color: gray;
+			}
+			.nav1{
+				background-color: gainsboro;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+			
+		</script>
+	</head>
+	<body>
+		<!-- 1.页眉部分，100% -->
+		<header class="container-fluid">
+			<div id="head"></div>
+		</header>
+		
+		
+		<!-- 2.主体部分，留白-->
+		<div class="container">
+			<!-- 详情 start -->
+			<div class="wrap">
+				<div class="bread_box">
+					<a href="/">首页</a>
+					<span> &gt;</span>
+					<a href="#">国内游</a><span> &gt;</span>
+					<a href="#">全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</a>
+				</div>
+				<div class="prosum_box">
+					<dl class="prosum_left">
+						<dt id="bimg">
+							<img alt="" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
+						</dt>
+						<dd id="simg">
+							<a class="up_img up_img_disable"></a>
+							<a title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">
+								<img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m20920d0669855e745d97f9ad1df966ebb.jpg">
+							</a>
+							<a title="" class="little_img cur_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg">
+								<img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m29788843d72171643297ccc033d9288ee.jpg">
+							</a>
+							<a title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m4531a8dbceefa2c44e6d0e35627cd2689.jpg">
+								<img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m2531a8dbceefa2c44e6d0e35627cd2689.jpg">
+							</a>
+
+							<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>
+						</dd>
+					</dl>
+					<div class="prosum_right">
+						<p class="pros_title" id="rname">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往返机票自由行二次确认</p>
+						<p class="hot" id="introduce">1-2月出发，网付立享￥1099/2人起！爆款位置有限，抢完即止！</p>
+						<div class="pros_other">
+							<p>经营商家  ：<span id="sname">黑马国旅</span></p>
+							<p>咨询电话 : <span id="sphone">400-618-9090</span></p>
+							<p>地址 ： <span id="saddress">传智播客黑马程序员</span></p>
+						</div>
+						<div class="pros_price">
+							<p class="price">促销价：<strong id="promotePrice">¥2699.00</strong><span>元</span></p>
+							<p class="price">原价：<strong id="price">¥2699.00</strong><span>元</span></p>
+							<p class="collect" >
+                        <span id="fBtn">
+
+                        </span>
+								<a class="btn" id="favorite"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
+
+                                 <a  class="btn already" disabled="disabled"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>
+								已收藏<span id="count">100</span>次
+							</p>
+
+						</div>
+					</div>
+				</div>
+				<div class="you_need_konw">
+					<span>旅游须知</span>
+					<div class="notice">
+						<p>1、旅行社已投保旅行社责任险。建议游客购买旅游意外保险 <br>
+
+						<p>2、旅游者参加打猎、潜水、海边游泳、漂流、滑水、滑雪、滑草、蹦极、跳伞、滑翔、乘热气球、骑马、赛车、攀岩、水疗、水上飞机等属于高风险性游乐项目的，敬请旅游者务必在参加前充分了解项目的安全须知并确保身体状况能适应此类活动；如旅游者不具备较好的身体条件及技能，可能会造成身体伤害。</p>
+
+						<p>3、参加出海活动时，请务必穿着救生设备。参加水上活动应注意自己的身体状况，有心脏病、冠心病、高血压、感冒、发烧和饮酒及餐后不可以参加水上活动及潜水。在海里活动时，严禁触摸海洋中各种鱼类，水母，海胆，珊瑚等海洋生物，避免被其蛰伤。老人和小孩必须有成年人陪同才能参加合适的水上活动。在海边游玩时，注意保管好随身携带的贵重物品。</p>
+
+						<p>4、根据中国海关总署的规定，旅客在境外购买的物品，在进入中国海关时可能需要征收关税。详细内容见《中华人民共和国海关总署公告2010年第54号文件》。</p>
+
+						<p>5、建议出发时行李托运，贵重物品、常用物品、常用药品、御寒衣物等请随身携带，尽量不要托运。行李延误属于不可抗力因素，我司将全力协助客人跟进后续工作，但我司对此不承担任何责任。</p>
+						<p>1、旅行社已投保旅行社责任险。建议游客购买旅游意外保险 <br>
+
+						<p>2、旅游者参加打猎、潜水、海边游泳、漂流、滑水、滑雪、滑草、蹦极、跳伞、滑翔、乘热气球、骑马、赛车、攀岩、水疗、水上飞机等属于高风险性游乐项目的，敬请旅游者务必在参加前充分了解项目的安全须知并确保身体状况能适应此类活动；如旅游者不具备较好的身体条件及技能，可能会造成身体伤害。</p>
+
+						<p>3、参加出海活动时，请务必穿着救生设备。参加水上活动应注意自己的身体状况，有心脏病、冠心病、高血压、感冒、发烧和饮酒及餐后不可以参加水上活动及潜水。在海里活动时，严禁触摸海洋中各种鱼类，水母，海胆，珊瑚等海洋生物，避免被其蛰伤。老人和小孩必须有成年人陪同才能参加合适的水上活动。在海边游玩时，注意保管好随身携带的贵重物品。</p>
+
+						<p>4、根据中国海关总署的规定，旅客在境外购买的物品，在进入中国海关时可能需要征收关税。详细内容见《中华人民共和国海关总署公告2010年第54号文件》。</p>
+
+						<p>5、建议出发时行李托运，贵重物品、常用物品、常用药品、御寒衣物等请随身携带，尽量不要托运。行李延误属于不可抗力因素，我司将全力协助客人跟进后续工作，但我司对此不承担任何责任。</p>
+					</div>
+				</div>
+			</div>
+			<!-- 详情 end -->
+		</div>
+		<!-- 3.页脚部分，100%-->
+		<div id="foot"></div>
+	</body>
+
+<script>
+	$(function () {
+
+		$(function () {
+			$.get("header.html",{},function (data) {
+				$("#head").html(data);
+			});
+			$.get("footer.html",{},function (data) {
+				$("#foot").html(data);
+			});
+
+			var pid = getParameter("pid");
+			$.get("product/findOne",{pid:pid},function (data) {
+				$("#rname").html(data.name);
+				$("#introduce").html(data.subTitle);
+				$("#sname").html(data.seller.name);
+				$("#sphone").html(data.seller.phone);
+				$("#saddress").html(data.seller.address);
+				$("#promotePrice").html(data.promotePrice);
+				$("#price").html(data.price);
+			});
+		});
+
+	});
+
+
+</script>
+
+</html>
