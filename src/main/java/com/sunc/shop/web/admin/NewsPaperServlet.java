@@ -1,9 +1,9 @@
 package com.sunc.shop.web.admin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sunc.shop.model.Address;
-import com.sunc.shop.model.User;
+import com.sunc.shop.model.*;
 import com.sunc.shop.service.AddressService;
+import com.sunc.shop.service.NewsPaperService;
 import com.sunc.shop.web.servlet.BaseServlet;
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -21,41 +21,106 @@ import java.util.List;
 @WebServlet("/admin/newsPaper/*")
 public class NewsPaperServlet extends BaseServlet {
 
-    private AddressService service = new AddressService();
+    private NewsPaperService service = new NewsPaperService();
 
     /**
-     *  查询当前用户的所有地址
+     *  根据种类id查询所有的文章
      */
-    public void findAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        List<Address> list = service.findAddressByUser(user.getId()+"");
+    public void findAllArticle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String cid = request.getParameter("cid");
+        List<NewsPaper> list = service.findAllArticleByCid(cid);
+
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json;charset=utf-8");
         mapper.writeValue(response.getWriter(),list);
     }
 
     /**
-     *  为当前用户增加一个新地址
+     *  根据id查询某一个具体的文章
      */
-    public void addOne(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Address address = new Address();
+    public void findArticle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String aid = request.getParameter("aid");
+        NewsPaper newsPaper = service.findArticle(aid);
+
+        ObjectMapper mapper = new ObjectMapper();
+        response.setContentType("application/json;charset=utf-8");
+        mapper.writeValue(response.getWriter(),newsPaper);
+    }
+    /**
+     *  新增一篇文章
+     */
+    public void addArticle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        NewsPaper newsPaper = new NewsPaper();
         try {
-            BeanUtils.populate(address,request.getParameterMap());
-            System.out.println(address);
+            BeanUtils.populate(newsPaper,request.getParameterMap());
+            service.addArticle(newsPaper);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-        User user = (User) request.getSession().getAttribute("user");
-        service.addAddress(address,user.getId()+"");
     }
 
     /**
-     *  删除某个地址
+     *  更新一篇文章
      */
-    public void deleteOne(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String aid = request.getParameter("aid");
-        service.deleteAddress(aid);
+    public void updateArticle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        NewsPaper newsPaper = new NewsPaper();
+        try {
+            BeanUtils.populate(newsPaper,request.getParameterMap());
+            service.updateArticle(newsPaper);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
+    /**
+     *  删除一篇文章
+     */
+    public void deleteArticle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String aid = request.getParameter("aid");
+        service.deleteArticle(aid);
+    }
+
+    /**
+     *  增加文章的访问量
+     */
+    public void changeCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String aid = request.getParameter("aid");
+        service.changeArticleCount(aid);
+    }
+
+
+    /**
+     *  增加一个快报种类
+     */
+    public void addCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String name = request.getParameter("name");
+        service.addCategory(name);
+    }
+
+    /**
+     *  删除一个快报种类
+     */
+    public void deleteCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        String cid = request.getParameter("cid");
+        service.deleteCategory(cid);
+    }
+    /**
+     *  查看所有的快报种类
+     */
+    public void findAllCategory(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        List<NewsPaperCategory> list = service.findAllCategory();
+    }
+
 }
