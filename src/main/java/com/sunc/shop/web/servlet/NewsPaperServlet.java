@@ -28,7 +28,7 @@ public class NewsPaperServlet extends BaseServlet {
      */
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String cid = request.getParameter("cid");
-        List<NewsPaper> list = service.findAllByCid(cid);
+        List<NewsPaper> list = service.findAllArticleByCid(cid);
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json;charset=utf-8");
         mapper.writeValue(response.getWriter(),list);

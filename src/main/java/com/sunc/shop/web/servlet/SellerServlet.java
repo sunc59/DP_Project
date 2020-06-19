@@ -48,7 +48,7 @@ public class SellerServlet extends BaseServlet {
      */
     public void findOne2(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String sName = request.getParameter("sName");
-        List<Seller> seller = service.findSeller(sName);
+        List<Seller> seller = service.findSellerByName(sName);
         ObjectMapper mapper = new ObjectMapper();
         response.setContentType("application/json;charset=utf-8");
         mapper.writeValue(response.getWriter(),seller);

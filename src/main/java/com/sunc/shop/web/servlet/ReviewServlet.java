@@ -44,7 +44,7 @@ public class ReviewServlet extends BaseServlet {
         service.addReview(user.getId()+"",pid,content);
     }
     /**
-     *  找到当前用户用户的所有评论
+     *  找到当前用户的所有评论
      */
     public void findAll2(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
@@ -55,7 +55,7 @@ public class ReviewServlet extends BaseServlet {
         mapper.writeValue(response.getWriter(),list);
     }
     /**
-     *  找到当前用户关于某个商品的评论
+     *  删除某个评论
      */
     public void deleteOne(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
