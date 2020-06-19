@@ -10,7 +10,12 @@
     b. 前台页面(main/webapp)  (暂时只包含前台页面)<br>
     c. 数据库连接配置文件(main/resources)  (druid.properties)<br>
     d. 前端页面使用jQuery异步调用后端接口返回的json数据，相关展示用BootStrap组件<br>
-    e. ...... 
+    e. 后续工作：
+                1. 补全完善前端页面
+                2. 将用SSM/SpringBoot包装后端代码
+                3. 使用SpringScurity进行权限控制
+                4. 前端js使用Vue代替jQuery
+7. 未完待续...  
 
 
 
