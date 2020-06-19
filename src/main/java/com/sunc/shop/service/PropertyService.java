@@ -26,7 +26,7 @@ public class PropertyService {
      * @param pid
      */
     public void deleteProperty(String pid) {
-        // propertyValueDao.deletePropertyValueByPTid(pid);
+        //propertyValueDao.deletePropertyValueByPTid(pid);
         propertyDao.deleteProperty(pid);
     }
 
@@ -41,11 +41,6 @@ public class PropertyService {
 
     public Property findPropertyByPid(String pid) {
         return propertyDao.findPropertyByPid(pid);
-    }
-
-    public static void main(String[] args)
-    {
-        new PropertyService().deleteProperty("13");
     }
 
 }
