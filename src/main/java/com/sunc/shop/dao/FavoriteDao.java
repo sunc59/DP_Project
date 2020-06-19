@@ -100,9 +100,4 @@ public class FavoriteDao {
         return list;
     }
 
-    public static void main(String[] args) {
-        FavoriteDao dao = new FavoriteDao();
-        List<Product> list = dao.findMyFavorite(3);
-        System.out.println(list);
-    }
 }

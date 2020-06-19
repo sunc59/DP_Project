@@ -57,16 +57,4 @@ public class AddressDao {
         return address;
     }
 
-    public static void main(String[] args) {
-        AddressDao dao = new AddressDao();
-        Address address = new Address();
-        address.setReceiverAddress("上海市静安寺");
-        address.setReceiverGender("女");
-        address.setReceiverName("万茜");
-        address.setReceiverPhone("2695357");
-        dao.insertAddress(address,"7");
-    }
-
-
-
 }
